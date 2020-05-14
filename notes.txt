@@ -15,3 +15,12 @@ concurrently -> module which helps to backend express server and front-end react
 process.en.PORT -> used in deploying in hosting server, it will look for this PORT number.
                                 ,if its used locally it will look for the PORT number 5000, if there is no environment variable
 
+config -> is a package file,where we can create a file,store all the data in it.
+    data which is default throughout the app,so we can import the value whenever we 
+    want.so we are storing db.
+
+when connection is made,it return a promise,so we are using 'arrow function' and 'async await'
+    so that after connection is established we can see the connection message and we are wrapping
+    in a try and catch block.
+
+process.exit(1) -> will make the application exit.
