@@ -24,3 +24,32 @@ when connection is made,it return a promise,so we are using 'arrow function' and
     in a try and catch block.
 
 process.exit(1) -> will make the application exit.
+
+await mongoose.connect(db, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        }) -> use this to remove the warnings 
+
+Model-> is for designing the data,or we are structuring what kind of data we 
+    want for our roles,i.e for user we need this kind of data.
+
+Body parser->is used to get data which has been sent to request body.Usually,it used
+    to be installed separately,but now we can use with express itself.
+
+Data validation-> it is done by express-validator package. we need to import
+    two things,check and validationResult. using this we can validate 
+    For eg:[
+        check('name', 'Name is required').not().isEmpty(), //name validation
+        check('email', 'Please enter a valid email').isEmail(), //email validation
+        check('password', 'Please enter a password with minimum 8 characters').isLength({
+            min: 8
+        }) //password validation with min length.
+    ],
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array()
+            })
+        }
+    }
