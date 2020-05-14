@@ -1,0 +1,17 @@
+npm i -> installs packages
+express -> backend framework
+express-validator -> for data validation
+bcryptjs -> for encryption of password, a js framework
+config -> for global variables
+gravatar -> for profile avator (images)
+jsonwebtoken -> for passing the token for validation
+mongoose -> an layer of framework, which is used for interacting with mongodb 
+request -> an module used for sending https request,used for github repository
+
+concurrently -> module which helps to backend express server and front-end react server.
+
+//
+
+process.en.PORT -> used in deploying in hosting server, it will look for this PORT number.
+                                ,if its used locally it will look for the PORT number 5000, if there is no environment variable
+
