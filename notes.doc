@@ -69,4 +69,25 @@ Bcryptjs ->is used for encrypting the password.So we are creating an level of en
     then we are using a hash function to encrypt the password and storing in the variable.
 
 Whenever we using the promise,we can use await and async the main function,instead of using promise.
-    i.e -> using .then().catch()
+    i.e -> using .then().catch(
+
+jsonwebtoken -> is used for verification and session for any user. it creates an web token, i.e an url
+        which contains information we want ot have,url is encrypted.the web token is signed,so that it can be used for validation and verification
+        const payload ={
+                id = user.id -> here we need to match with mongodb's id,but mongoose has an abstract which converts _id to id.
+            }
+        payload -> means data/value which is inside in the encrypted url
+        jwt.sign() -> is a function,which helps to create signed token so that it can verified from client side
+        jwtSceret => is just an message,which is decided by developer
+        jwt.sign(payload,jwtSceret)
+        const config = require('config') -> no need to mention the path because as we have installed config module.
+401 -> status used for not authorized 
+400 -> bad request
+200 -> everything is fine.
+In middleware/auth.js -> we are checking for token,if not we are returning 401 status,then we are decoding the 
+    token 
+To add a middleware in a request, we need to include the middleware as second argument
+
+const user = await User.findById(req.user.id).select('-password')   
+    => here we are searching the user by id,we are using req.user.id because we have assigned the decoded value to req.user
+       when we are using req.user.id, password also comes with it ,so to remove it we are using .select('-password')
