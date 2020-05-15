@@ -53,3 +53,20 @@ Data validation-> it is done by express-validator package. we need to import
             })
         }
     }
+In user.js -> when we trying to find out,whether user is already there or etc...
+    we are using async await function, because we can also use .then().catch(),instead 
+    we are using async await function, and implementing all the function in a try and catch module.
+    
+Gravatar:-> is used when we want to display the profile image,which attached to email_id.
+    for that const avatar = gravatar.url(email,{
+                s:'200',
+                r:
+                d:
+            })
+    s: -> default size,r ->  rating, which prevents from adultery images, d-> default,which 
+        gives an default image,if there is no image.
+Bcryptjs ->is used for encrypting the password.So we are creating an level of encryption and storing in the salt
+    then we are using a hash function to encrypt the password and storing in the variable.
+
+Whenever we using the promise,we can use await and async the main function,instead of using promise.
+    i.e -> using .then().catch()

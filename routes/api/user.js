@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const gravatar = require('gravatar')
 const {
     check,
     validationResult
@@ -33,7 +34,7 @@ router.post('/', [
         try {
             let user = await User.findOne({
                 email: email
-            });
+            }); //mongodb query by searching email using findOne
             if (user) {
                 res.status(400).json({
                     errors: [{
@@ -42,12 +43,27 @@ router.post('/', [
                 })
             } // check if user exists or not
 
-            // get gravatar,i.e profile image
+            const avatar = gravatar.url(email, {
+                s: '200',
+                r: 'pg',
+                d: 'mm'
+            }) // get gravatar,i.e profile image
 
-            //Encrypt the password
+            user = new User({
+                name,
+                email,
+                avatar,
+                password
+            }) // creates an instance of user,which arguments should be passed.
+
+            const salt = await bcrypt.genSalt(10); // level of encryption
+
+            user.password = await bcrypt.hash(password, salt) //Encrypt the password
+
+            await user.save() // saving encrypted password and user details.
 
             //return jason web token 
-            res.send("User route")
+            res.send("User registered")
         } catch (err) {
             console.error(err.message)
             res.status(400).send("Server Error (user.js)")
