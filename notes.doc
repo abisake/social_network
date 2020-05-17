@@ -106,3 +106,10 @@ Profile.js -> we are creating an model/schema for profile in db.
 Whenever we are using access as private,we need to implement auth middleware.
 
 In profile.js-> we are creating an user profile using profileFields,if user exists,we are updating the user.
+   First we are destructing the req.body variable.then we are creating empty array profileFields.then we are storing the user id and 
+   we are checking whether the value is available or not,if available it will stored in db,if not it passes
+   For social,it has object within object,so at first we need to declare object,profileFields.social ={},then we are assigning the value
+   Then,we are searching for given user.id,if exists update the values & return the json value,if not create
+   new object of profile and save() in db.As mongoose function returns a promise,we need to use .then().catch() but as we are using async await,so we
+   need to have await before every function.
+
