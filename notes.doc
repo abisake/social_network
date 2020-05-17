@@ -104,3 +104,5 @@ Profile.js -> we are creating an model/schema for profile in db.
         in which we only need 'name','avatar', so for that we are using populate()-> 1st arg name of the field,2nd array=> which fields are required.
 
 Whenever we are using access as private,we need to implement auth middleware.
+
+In profile.js-> we are creating an user profile using profileFields,if user exists,we are updating the user.

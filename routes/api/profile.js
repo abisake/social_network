@@ -72,10 +72,57 @@ router.post('/', [auth, [
         if (skills) {
             profileFields.skills = skills.split(',').map(skill => skill.trim())
         }
+        //build social object
+        profileFields.social = {}
+        if (youtube) profileFields.social.youtube = youtube
+        if (facebook) profileFields.social.facebook = facebook
+        if (twitter) profileFields.social.twitter = twitter
+        if (instagram) profileFields.social.instagram = instagram
+        if (linkedin) profileFields.social.linkedin = linkedin
 
-        console.log(skills)
+        try {
+            let profile = await Profile.findOne({
+                user: req.user.id
+            })
 
-        res.send('Hello')
+            if (profile) {
+                profile = await Profile.findOneAndUpdate( //updating an existing user
+                    {
+                        user: req.user.id
+                    }, {
+                        $set: profileFields
+                    }, {
+                        new: true
+                    }
+                )
+
+                return res.json(profile)
+            }
+            //creating an user profile
+            profile = new Profile(profileFields)
+
+            await profile.save();
+            res.json(profile)
+        } catch (err) {
+            console.error(err.message)
+            res.send(500).send("Server error (profile.js)")
+
+        }
     }
 )
+
+//@route   GET api/profile
+//@desc    all user profile 
+//@access  public
+router.get('/', async (req, res) => {
+    try {
+        const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+        res.json(profiles)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("Server error (profile.js)")
+    }
+})
+
+
 module.exports = router;
