@@ -84,6 +84,7 @@ jsonwebtoken -> is used for verification and session for any user. it creates an
 401 -> status used for not authorized 
 400 -> bad request
 200 -> everything is fine.
+500 -> internal server error
 In middleware/auth.js -> we are checking for token,if not we are returning 401 status,then we are decoding the 
     token 
 To add a middleware in a request, we need to include the middleware as second argument
@@ -91,3 +92,15 @@ To add a middleware in a request, we need to include the middleware as second ar
 const user = await User.findById(req.user.id).select('-password')   
     => here we are searching the user by id,we are using req.user.id because we have assigned the decoded value to req.user
        when we are using req.user.id, password also comes with it ,so to remove it we are using .select('-password')
+In route/api.auth.js -> in route.post request,we are comparing the id and id which is stored in db.
+    In bcrypt,there is a function which compares encrypted password and normal text password,sy whether it is same or not. => bcrypt.compare()
+    If there is no match,we are returning same error message "Invalid credentials", because user should not know, whether email is wrong or password is wrong
+
+Profile.js -> we are creating an model/schema for profile in db.
+(routes/api)profile.js -> we are checking whether logged user has a profile or not.
+    this is response should be for single user,so we need to have api/profile/me
+    if api/profile is given it will give all the user's profiles.
+    Here we need user's id, which we are getting form the UserSchema-> user:req.user.id,but user has many fields,
+        in which we only need 'name','avatar', so for that we are using populate()-> 1st arg name of the field,2nd array=> which fields are required.
+
+Whenever we are using access as private,we need to implement auth middleware.
