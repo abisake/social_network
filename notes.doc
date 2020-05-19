@@ -113,3 +113,8 @@ In profile.js-> we are creating an user profile using profileFields,if user exis
    new object of profile and save() in db.As mongoose function returns a promise,we need to use .then().catch() but as we are using async await,so we
    need to have await before every function.
 
+   We are trying to get profile of an user by his id,which is similar to the get profile of all users,mongodb query will be changing to find() to findOne()
+   Here, we are trying to find a match, if there is no profile exists return error.So in Object Id, if a character is replaced it will be valid user_id,
+   so we need to send the error message as "no profile found".If there is any server error, we can send error message as "Server error".
+   
+
