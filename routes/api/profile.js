@@ -1,4 +1,6 @@
 const express = require('express')
+const request = require('request')
+const config = require('config')
 const router = express.Router();
 const {
     check,
@@ -304,4 +306,38 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
         res.status(500).send("Server error (profile.js)")
     }
 })
+
+//@route   GET api/profile/github/:username
+//@desc    get github user repos from github
+//@access  public
+// error module is not working
+router.get('/github/:username', async (req, res) => {
+    try {
+        const options = {
+            uri: `https://api/github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secert=${config.get('githubSecret')}`,
+            method: 'GET',
+            headers: {
+                'user-agent': 'node.js '
+            }
+        }
+
+        request(options, (error, response, body) => {
+            if (error) {
+                console.error(error.message)
+            }
+
+            if (response.statusCode !== 200) {
+                return res.status(404).json({
+                    msg: "No Github profile found"
+                })
+            }
+
+            res.json(JSON.parse(body))
+        })
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("Server error (profile.js)")
+    }
+})
+
 module.exports = router;

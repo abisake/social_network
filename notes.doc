@@ -118,3 +118,8 @@ In profile.js-> we are creating an user profile using profileFields,if user exis
    so we need to send the error message as "no profile found".If there is any server error, we can send error message as "Server error".
    
 
+model/post.js -> we are creating db schema for posts
+
+In api/post.js -> we are creating a profile.So we are importing User,profile and post Schemas,because we need user id,
+    profile id,avatar. We are searching for user by his id and removing password 
+    And creating a newpost object from Post and save the details 

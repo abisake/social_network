@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://abisake:abisake@mern-zbvtx.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "mySecret"
+    "jwtSecret": "mySecret",
+    "githubClientId": "21b13e1fdc4f8457025a",
+    "githubSecret": "1d362fa183e1a2ebfc9c7016ae8e07aab5e91789"
 }
