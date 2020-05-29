@@ -123,3 +123,16 @@ model/post.js -> we are creating db schema for posts
 In api/post.js -> we are creating a profile.So we are importing User,profile and post Schemas,because we need user id,
     profile id,avatar. We are searching for user by his id and removing password 
     And creating a newpost object from Post and save the details 
+
+npx create-react-app <folder_name> -> will install react into folder.
+
+so we need to run react dev server and backend express server also,so we are using concurrently package. adding a script client-> npm start 
+concurrently -> "npm run server" "npm run client"
+
+Dev dependencies ->
+    axios: to handle http requests,creating global headers
+    redux-thunk: an middleware which can make synchronous request
+    react-moment: is used to use moment package within the react component
+
+we are using proxy because,when we are making an request, we need to type the entire 
+url i.e "http://loaclhost:5000/api/.....",so in order to shorten it,we are using proxy 
