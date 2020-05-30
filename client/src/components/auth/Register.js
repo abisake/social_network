@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const Register = () => {
 	const [formData, setFormData] = useState({
@@ -21,24 +20,25 @@ const Register = () => {
 		if (password !== password2) {
 			console.log("password did not match");
 		} else {
-			const newUser = {
-				name, //name:name
-				email, //email:email
-				password, //password:password
-			};
-			try {
-				const config = {
-					headers: {
-						"Content-Type": "application/json", //assigning the headers
-					},
-				};
+			console.log("Success");
+			// 	const newUser = {
+			// 		name, //name:name
+			// 		email, //email:email
+			// 		password, //password:password
+			// 	};
+			// 	try {
+			// 		const config = {
+			// 			headers: {
+			// 				"Content-Type": "application/json", //assigning the headers
+			// 			},
+			// 		};
 
-				const body = JSON.stringify(newUser); //converting newUser value to json data
-				const res = await axios.post("/api/users", body, config); //sending body and config details
-				console.log(res); //token will be returned
-			} catch (err) {
-				console.error(err.response.data);
-			}
+			// 		const body = JSON.stringify(newUser); //converting newUser value to json data
+			// 		const res = await axios.post("/api/users", body, config); //sending body and config details
+			// 		console.log(res.data); //token will be returned
+			// 	} catch (err) {
+			// 		console.error(err.response.data);
+			// 	}
 		}
 	};
 	return (

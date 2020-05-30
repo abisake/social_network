@@ -136,3 +136,36 @@ Dev dependencies ->
 
 we are using proxy because,when we are making an request, we need to type the entire 
 url i.e "http://loaclhost:5000/api/.....",so in order to shorten it,we are using proxy 
+
+Redux -> is a state manager,which controls data flow from the UI component to server and vice-versa.
+
+Redux-dev-tools -> is an extension,in google chrome,which can show how the data is being transferred,
+which component has the data.To use it in the browser,we need to create a store in the code.As we have 
+installed extension as a package, we can have decent code for it.
+So we are creating a script called store.js.
+
+import {createStore,applyMiddleware} from 'redux' -> createStore is for creating redux store so that we could 
+use redux-devtools-extension.
+we are going to use 'thunk' middleware, so for that we are using 'applyMiddleware'
+import {composeWithDevTools} from 'redux-devtools-extension';
+import thunk from 'redux-thunk'
+import rootReducer from './reducers' -> reducer is for sending/controlling the data,
+which is been sent to component,i.e auth reducer,profile reducer,etc....
+so for that,we need an root reducer, which will be reducers/index.js.
+So as it is in index.js file,so need to explicitly mention it the import path.
+
+const initialState = {}; -> creating an empty initialState
+
+const middleware = [thunk]; the only middleware here is thunk,so we are storing in a variable
+
+const store = createStore(
+	rootReducer,
+	initialState,
+	composeWithDevTools(applyMiddleware(...middleware)),
+); -> we are creating an store,for that function,we are passing rootReducer,initialState and as we
+are using redux-devtools,using composeWithDevTools()-> applying the middleware function and 
+sending the middleware and by using spread operator,to copy the all data in the array,
+
+Provider -> react and redux is a two separate things,so we need to enclose it 
+as a single package, so we are using provider to enclose it
+ 
