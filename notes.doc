@@ -168,4 +168,23 @@ sending the middleware and by using spread operator,to copy the all data in the 
 
 Provider -> react and redux is a two separate things,so we need to enclose it 
 as a single package, so we are using provider to enclose it
- 
+
+export const setAlert = (msg,alertType) => dispatch => {
+    dispatch({
+        type:SET_ALERT,
+        payload:{msg,alertType,id}
+    })
+}->  we can call dispatch like that because,dispatch is an middleware.
+-> here we are assigning dispatch's type as SET_ALERT and payload(i.e data) as msg, alertType
+and the id.
+
+connect -> is package which is used to connect the redux and react, and also we can work on
+redux.
+SET_ALERT is an prop so we need to use proptypes
+IN register.js, there are many alerts,we have so we need to connect the register component and redux,
+for that we ar using connect.Whenever connect is used,
+we need to export it 
+export default connect()(<component_name>)
+
+connect() => takes two arguments, 1.state, which we want to map
+2.Actions, which we want to happen
