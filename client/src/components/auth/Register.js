@@ -7,7 +7,6 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 
 const Register = ({ setAlert, register }) => {
-	//eslint-disable-next-line
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
