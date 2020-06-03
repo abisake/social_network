@@ -7,6 +7,7 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 
 const Register = ({ setAlert, register }) => {
+	//eslint-disable-next-line
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -26,25 +27,25 @@ const Register = ({ setAlert, register }) => {
 			setAlert("password did not match", "danger");
 		} else {
 			register({ name, email, password });
-			{
-				// 	const newUser = {
-				// 		name, //name:name
-				// 		email, //email:email
-				// 		password, //password:password
-				// 	};
-				// 	try {
-				// 		const config = {
-				// 			headers: {
-				// 				"Content-Type": "application/json", //assigning the headers
-				// 			},
-				// 		};
-				// 		const body = JSON.stringify(newUser); //converting newUser value to json data
-				// 		const res = await axios.post("/api/users", body, config); //sending body and config details
-				// 		console.log(res.data); //token will be returned
-				// 	} catch (err) {
-				// 		console.error(err.response.data);
-				// 	}
-			}
+		}
+		{
+			// 	const newUser = {
+			// 		name, //name:name
+			// 		email, //email:email
+			// 		password, //password:password
+			// 	};
+			// 	try {
+			// 		const config = {
+			// 			headers: {
+			// 				"Content-Type": "application/json", //assigning the headers
+			// 			},
+			// 		};
+			// 		const body = JSON.stringify(newUser); //converting newUser value to json data
+			// 		const res = await axios.post("/api/users", body, config); //sending body and config details
+			// 		console.log(res.data); //token will be returned
+			// 	} catch (err) {
+			// 		console.error(err.response.data);
+			// 	}
 		}
 	};
 	return (
@@ -92,7 +93,6 @@ const Register = ({ setAlert, register }) => {
 						name="password2"
 						value={password2}
 						onChange={(e) => onChange(e)}
-						minLength="6"
 					/>
 				</div>
 				<input
