@@ -27,7 +27,7 @@
 		"passport-jwt": "^4.0.0",
 		"request": "^2.88.2",
 		"uuidv4": "^6.1.0",
-		"validator": "^9.4.1"
+		"validator": "^13.7.0"
 	},
 	"devDependencies": {
 		"nodemon": "^1.17.3"
